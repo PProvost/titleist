@@ -29,10 +29,10 @@ local debugf = tekDebug and tekDebug:GetFrame("Titleist")
 local function Debug(...) if debugf then debugf:AddMessage(string.join(", ", ...)) end end
 
 local function ChangeTitle()
-	local i = math.random(#availableTitles)
-
-	Print("Setting title to '" .. GetTitleName(availableTitles[i]) .. "'")
-	SetCurrentTitle(i)
+	if #availableTitles == 0 then return end
+	local titleId = availableTitles[ math.random(#availableTitles) ]
+	Print("Setting title to '" .. GetTitleName(titleId) .. "'")
+	SetCurrentTitle(titleId)
 end
 
 local total = 0
@@ -44,29 +44,32 @@ local function OnUpdate(self,elapsed)
 	end
 end
 
-local f = CreateFrame("Frame")
+Titleist = CreateFrame("Frame")
 
-function f:KNOWN_TITLES_UPDATE()
+function Titleist:KNOWN_TITLES_UPDATE()
+	Debug("KNOWN_TITLES_UPDATE")
 	availableTitles = {}
-	local numTitles = GetNumTitles();
+	local numTitles = GetNumTitles()
 	for i = 1, numTitles do
-		if IsTitleKnown(i) then
+		if IsTitleKnown(i) == 1 then
 			table.insert(availableTitles, i)
-			Debug( "Known title: " .. tostring(i) .. " - " .. GetTitleName(i) )
+			Debug(tostring(i))
 		end
 	end
 
-end
-
-function f:PLAYER_LOGIN()
-	LibStub("tekKonfig-AboutPanel").new(nil, "Titleist")
-
-	self:KNOWN_TITLES_UPDATE()
 	ChangeTitle()
 end
 
-f:SetScript("OnEvent", function(self, event, ...) if self[event] then return self[event](self, event, ...) end end)
-f:SetScript("OnUpdate", OnUpdate)
-f:RegisterEvent("KNOWN_TITLES_UPDATE")
-if IsLoggedIn() then f:PLAYER_LOGIN() else f:RegisterEvent("PLAYER_LOGIN") end
+function Titleist:PLAYER_LOGIN()
+	Debug("PLAYER_LOGIN")
+
+	LibStub("tekKonfig-AboutPanel").new(nil, "Titleist")
+	self:RegisterEvent("KNOWN_TITLES_UPDATE")
+
+	self:KNOWN_TITLES_UPDATE()
+end
+
+Titleist:SetScript("OnEvent", function(self, event, ...) if self[event] then return self[event](self, event, ...) end end)
+Titleist:SetScript("OnUpdate", OnUpdate)
+if IsLoggedIn() then Titleist:PLAYER_LOGIN() else Titleist:RegisterEvent("PLAYER_LOGIN") end
 
