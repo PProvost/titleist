@@ -1,0 +1,19 @@
+## Interface: 30000
+
+## Title: Titleist
+## Notes: Randomly swaps your title every 5 minutes. No configuration. Just install and go.
+## Author: Quaiche
+## Version: 1.0
+## OptionalDeps: tekDebug
+
+## X-License: Apache 2.0
+## X-Category: User Interface Enchancements
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+LibStub.lua
+tekKonfigAboutPanel.lua
+Titleist.lua
+
+
