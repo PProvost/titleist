@@ -25,9 +25,6 @@ local function Print(...)
 	DEFAULT_CHAT_FRAME:AddMessage(string.join(" ", "|cFF33FF99Titleist|r:", ...)) 
 end
 
-local debugf = tekDebug and tekDebug:GetFrame("Titleist")
-local function Debug(...) if debugf then debugf:AddMessage(string.join(", ", ...)) end end
-
 local function ChangeTitle()
 	if #availableTitles == 0 then return end
 	local titleId = availableTitles[ math.random(#availableTitles) ]
@@ -47,13 +44,11 @@ end
 Titleist = CreateFrame("Frame")
 
 function Titleist:KNOWN_TITLES_UPDATE()
-	Debug("KNOWN_TITLES_UPDATE")
 	availableTitles = {}
 	local numTitles = GetNumTitles()
 	for i = 1, numTitles do
 		if IsTitleKnown(i) == 1 then
 			table.insert(availableTitles, i)
-			Debug(tostring(i))
 		end
 	end
 
@@ -61,15 +56,11 @@ function Titleist:KNOWN_TITLES_UPDATE()
 end
 
 function Titleist:PLAYER_LOGIN()
-	Debug("PLAYER_LOGIN")
-
 	LibStub("tekKonfig-AboutPanel").new(nil, "Titleist")
 	self:RegisterEvent("KNOWN_TITLES_UPDATE")
-
 	self:KNOWN_TITLES_UPDATE()
 end
 
 Titleist:SetScript("OnEvent", function(self, event, ...) if self[event] then return self[event](self, event, ...) end end)
 Titleist:SetScript("OnUpdate", OnUpdate)
 if IsLoggedIn() then Titleist:PLAYER_LOGIN() else Titleist:RegisterEvent("PLAYER_LOGIN") end
-
