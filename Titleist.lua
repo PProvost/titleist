@@ -25,10 +25,19 @@ local function Print(...)
 	DEFAULT_CHAT_FRAME:AddMessage(string.join(" ", "|cFF33FF99Titleist|r:", ...)) 
 end
 
+local function GetFullTitleName(titleId)
+	local title = GetTitleName(titleId)
+	if strsub( title, strlen(title) ) == " " then
+		return title .. UnitName("player")
+	else 
+		return UnitName("player") .. title
+	end
+end
+
 local function ChangeTitle()
 	if #availableTitles == 0 then return end
 	local titleId = availableTitles[ math.random(#availableTitles) ]
-	Print("Setting title to '" .. GetTitleName(titleId) .. "'")
+	Print("Setting title to '" .. GetFullTitleName(titleId) .. "'")
 	SetCurrentTitle(titleId)
 end
 
