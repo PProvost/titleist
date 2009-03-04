@@ -5,8 +5,8 @@ and the titles that go with them. But which title should you display?
 
 Don't fret, just let Titleist take care of it for you.
 
-Every 5 minutes, Titleist will change your title randomly. Just install and go. No configuration
-required.
+Every 5 minutes, Titleist will change your title randomly. The new title will be printed to your default chat frame. 
+Just install and go. No configuration required.
 
 h2. License
 

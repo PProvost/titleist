@@ -21,6 +21,8 @@ local delay = 300 --seconds
 
 local availableTitles = {}
 
+local SetCurrentTitle = SetCurrentTitle
+
 local function Print(...) 
 	DEFAULT_CHAT_FRAME:AddMessage(string.join(" ", "|cFF33FF99Titleist|r:", ...)) 
 end
