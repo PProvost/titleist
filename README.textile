@@ -16,7 +16,7 @@ I've had a number of feature requests for a configurable timer length. Rather th
 * After the initial comment block, there is a line that looks like this:
 
 bq. @-- Change this if you don't like the delay@
-bq. @local delay = 300 --seconds@
+@local delay = 300 --seconds@
 
 * Change that number to the number of seconds you would like between title changes. The value is in seconds.
 * Save the file and if you are still in game, reload UI
