@@ -1,4 +1,4 @@
-h1. Titleist
+h2. Titleist
 
 Titleist is a simple solution to a simple problem. Everyone is now collecting achievements
 and the titles that go with them. But which title should you display?
@@ -8,19 +8,15 @@ Don't fret, just let Titleist take care of it for you.
 Every 5 minutes, Titleist will change your title randomly. The new title will be printed to your default chat frame. 
 Just install and go. No configuration required.
 
-h2. License
+h2. Changing the timer
 
-Copyright 2009 Quaiche
+I've had a number of feature requests for a configurable timer length. Rather than double the amount of code in the addon to enable a configuration option, I will instead show you how to edit the LUA file to change the timer.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+* Open Titlelist.lua in any text editor
+* After the initial comment block, there is a line that looks like this:
 
-http://www.apache.org/licenses/LICENSE-2.0
+-- Change this if you don't like the delay
+local delay = 300 --seconds
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
+* Change that number to the number of seconds you would like between title changes. The value is in seconds.
+* Save the file and if you are still in game, reload UI
