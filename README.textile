@@ -1,12 +1,12 @@
 h2. Titleist
 
-Titleist is a simple solution to a simple problem. Everyone is now collecting achievements
-and the titles that go with them. But which title should you display?
+_**Patch 3.3 Information Unfortunately because some people had scripts and mods that cycled titles every second, creating too much network traffic, etc., Blizzard locked us out of the SetCurrentTitle() funciton unless it is triggered by a user action such as a button click or keybind. For the time being, until I can work out another alternative, this addon is out of commission.**_
+
+Titleist is a simple solution to a simple problem. Everyone is now collecting achievements and the titles that go with them. But which title should you display?
 
 Don't fret, just let Titleist take care of it for you.
 
-Every 5 minutes, Titleist will change your title randomly. The new title will be printed to your default chat frame. 
-Just install and go. No configuration required.
+Every 5 minutes, Titleist will change your title randomly. The new title will be printed to your default chat frame.  Just install and go. No configuration required.
 
 h2. Changing the timer
 

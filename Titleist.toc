@@ -1,6 +1,6 @@
 ## Interface: 30300
 ## Title: Titleist
-## Notes: Randomly swaps your title every 5 minutes. No configuration. Just install and go.
+## Notes: LDB Title Randomizer
 ## Author: Quaiche
 ## Version: 1.0
 ## OptionalDeps: tekDebug
@@ -9,7 +9,9 @@
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
 
-LibStub.lua
-tekKonfigAboutPanel.lua
+libs\LibStub.lua
+libs\LibQTip-1.0\LibQTip-1.0.lua
+libs\tekKonfigAboutPanel.lua
+
 # Titleist.lua
 Titleist-LDB.lua
